@@ -1,42 +1,43 @@
 # 🌿 EcoLens AI: Vision-to-Action
 **Final Prototype | TechSprint 2026 Hackathon**
 
-EcoLens AI is an intelligent waste management system that leverages **Gemini 3 Flash** Multimodal AI to transform how users perceive waste—turning everyday trash into a resource for creative upcycling.
+[cite_start]EcoLens AI is an intelligent waste management system that leverages **Gemini 3 Flash** Multimodal AI to transform how users perceive waste—turning everyday trash into a resource for creative upcycling[cite: 13, 15].
 
 ---
 
 ## 💡 The Problem
-Recycling contamination and "wish-cycling" cost municipalities millions and damage the environment. Most people want to recycle but are confused by local rules. EcoLens AI provides a "second look" at waste to ensure it ends up in the right place—or stays out of the bin entirely.
+[cite_start]Recycling contamination and "wish-cycling" cost municipalities millions and damage the environment[cite: 22]. [cite_start]EcoLens AI provides a "second look" at waste to ensure it ends up in the right place—or stays out of the bin entirely[cite: 53].
 
 ## ✨ The Solution
-* **Instant Classification:** Precise material identification using Gemini 3 Flash.
-* **Actionable Guidance:** Real-time feedback on whether an item belongs in the **Blue (Recyclable)**, **Green (Compost)**, or **Grey (Landfill)** bin.
-* **Waste-to-Wealth:** A DIY upcycling engine that generates personalized craft ideas to extend product life.
+* [cite_start]**Instant Classification:** Precise material identification using Gemini 3 Flash[cite: 13].
+* [cite_start]**Actionable Guidance:** Clear instructions on which bin to use, helping users avoid recycling errors[cite: 53].
+* [cite_start]**Waste-to-Wealth:** A DIY upcycling engine that generates personalized craft ideas to keep waste out of landfills[cite: 53].
 
 ## 🚀 Technical Stack
+
 | Layer | Technology |
 | :--- | :--- |
-| **Frontend** | Next.js (App Router) & Tailwind CSS |
-| **Backend** | Node.js & Express |
+| **Frontend** | Next.js 15 (App Router) & Tailwind CSS |
+| **Backend** | Node.js & Express (Secure Server-Side Architecture) |
 | **AI Brain** | Google Gemini 3 Flash (Model: `gemini-3-flash-preview`) |
-| **Database** | Firebase Firestore (Impact Tracking) |
-| **Security** | Dotenv Environment Management |
+| **Database** | Firebase Firestore (Impact Tracking & Persistence) |
+| **Security** | Dotenv Environment Variables & .gitignore Protection |
 
 ---
 
 ## ⚙️ Local Development Setup
 
 ### 1. Prerequisites
-* Node.js (v18+)
-* Google AI Studio API Key
-* Firebase Service Account Key
+* [cite_start]Node.js (v18+) [cite: 45]
+* [cite_start]Google AI Studio API Key [cite: 26, 67]
+* [cite_start]Firebase Service Account Key [cite: 60]
 
 ### 2. Backend Configuration
 ```bash
 cd backend
 npm install
-# Security Step: Rename .env.example to .env and add your key
-# Ensure serviceAccountKey.json is placed in the /backend folder
+# Security Step: Create a .env file and add your GEMINI_API_KEY
+# Place your serviceAccountKey.json in the /backend folder
 node server.js
 3. Frontend Configuration
 Bash
@@ -46,10 +47,21 @@ npm install
 npm run dev
 The application will be live at http://localhost:3000.
 
-🔒 Security
-Sensitive keys are managed via .env and serviceAccountKey.json.
+🔒 Security & Best Practices
 
-Both are excluded from version control via .gitignore to prevent unauthorized API usage.
+Server-Side Architecture: To prevent "Client-Side Danger," all API calls are routed through a secure backend.
+
+
+
+
+
+Secret Management: API keys and Firebase credentials are stored in environment variables and are not tracked by Git.
+
+
+
+
+Firestore Rules: Database permissions are currently set to "Test Mode" for the hackathon evaluation period.
+
 
 👥 The Team
 Developer A: Backend & AI Integration Specialist
