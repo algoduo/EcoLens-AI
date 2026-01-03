@@ -46,6 +46,9 @@ A DIY upcycling engine that generates personalized craft ideas, encouraging reus
 - Google AI Studio **API Key**
 - Firebase **Service Account Key**
 
+# Security Step: Create a .env file and add your GEMINI_API_KEY
+# Place your serviceAccountKey.json in the /backend folder [cite: 69]
+node server.js
 ---
 
 ### 2️⃣ Backend Configuration
