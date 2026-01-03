@@ -38,7 +38,7 @@ cd backend
 npm install
 # Security Step: Create a .env file and add your GEMINI_API_KEY
 # Place your serviceAccountKey.json in the /backend folder
-node server.js
+node server.js'''
 3. Frontend Configuration
 Bash
 
