@@ -1,31 +1,3 @@
-
-That block is your **entire GitHub README.md file**.
-
----
-
-## Why it *looked* like it wasn’t one thing
-
-In chat, I had to:
-- Explain **why it works**
-- Reassure you **how to use it**
-- Add tips **outside the code block**
-
-But **GitHub itself only cares about what’s inside the Markdown block**.
-
-👉 Everything **inside that one fenced block** = **ONE FILE**  
-👉 Everything **outside** = just explanation for you
-
----
-
-## What you should actually do (step-by-step)
-
-1. Open your project repository
-2. Open `README.md`
-3. **Delete everything inside it**
-4. **Paste ONLY this part** 👇  
-   (from ```md to ```)
-
-```md
 # 🌿 EcoLens AI: Vision-to-Action
 
 **Final Prototype | TechSprint 2026 Hackathon**
