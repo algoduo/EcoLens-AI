@@ -1,69 +1,83 @@
+
+That block is your **entire GitHub README.md file**.
+
+---
+
+## Why it *looked* like it wasn’t one thing
+
+In chat, I had to:
+- Explain **why it works**
+- Reassure you **how to use it**
+- Add tips **outside the code block**
+
+But **GitHub itself only cares about what’s inside the Markdown block**.
+
+👉 Everything **inside that one fenced block** = **ONE FILE**  
+👉 Everything **outside** = just explanation for you
+
+---
+
+## What you should actually do (step-by-step)
+
+1. Open your project repository
+2. Open `README.md`
+3. **Delete everything inside it**
+4. **Paste ONLY this part** 👇  
+   (from ```md to ```)
+
+```md
 # 🌿 EcoLens AI: Vision-to-Action
+
 **Final Prototype | TechSprint 2026 Hackathon**
 
-[cite_start]EcoLens AI is an intelligent waste management system that leverages **Gemini 3 Flash** Multimodal AI to transform how users perceive waste—turning everyday trash into a resource for creative upcycling[cite: 13, 15].
+EcoLens AI is an intelligent waste management system that leverages **Gemini 3 Flash Multimodal AI** to transform how users perceive waste—turning everyday trash into an opportunity for responsible disposal and creative upcycling.
 
 ---
 
 ## 💡 The Problem
-[cite_start]Recycling contamination and "wish-cycling" cost municipalities millions and damage the environment[cite: 22]. [cite_start]EcoLens AI provides a "second look" at waste to ensure it ends up in the right place—or stays out of the bin entirely[cite: 53].
+
+Recycling contamination and *“wish-cycling”* cost municipalities millions every year and significantly harm the environment. Many users are unsure whether an item is recyclable, compostable, or trash—leading to incorrect disposal.
+
+**EcoLens AI provides a “second look” at waste**, ensuring it ends up in the **right place**—or stays **out of the bin entirely**.
+
+---
 
 ## ✨ The Solution
-* [cite_start]**Instant Classification:** Precise material identification using Gemini 3 Flash[cite: 13].
-* [cite_start]**Actionable Guidance:** Clear instructions on which bin to use, helping users avoid recycling errors[cite: 53].
-* [cite_start]**Waste-to-Wealth:** A DIY upcycling engine that generates personalized craft ideas to keep waste out of landfills[cite: 53].
+
+### 🔍 Instant Classification
+Accurate material identification using **Gemini 3 Flash Multimodal AI**.
+
+### 🧭 Actionable Guidance
+Clear, step-by-step instructions on which bin to use, helping users avoid recycling mistakes.
+
+### ♻️ Waste-to-Wealth
+A DIY upcycling engine that generates personalized craft ideas, encouraging reuse and reducing landfill waste.
+
+---
 
 ## 🚀 Technical Stack
 
-| Layer | Technology |
-| :--- | :--- |
-| **Frontend** | Next.js 15 (App Router) & Tailwind CSS |
-| **Backend** | Node.js & Express (Secure Server-Side Architecture) |
-| **AI Brain** | Google Gemini 3 Flash (Model: `gemini-3-flash-preview`) |
-| **Database** | Firebase Firestore (Impact Tracking & Persistence) |
-| **Security** | Dotenv Environment Variables & .gitignore Protection |
+| Layer        | Technology |
+|-------------|------------|
+| Frontend    | Next.js 15 (App Router) & Tailwind CSS |
+| Backend     | Node.js & Express (Secure Server-Side Architecture) |
+| AI Brain    | Google Gemini 3 Flash (`gemini-3-flash-preview`) |
+| Database    | Firebase Firestore (Impact Tracking & Persistence) |
+| Security    | Dotenv Environment Variables & `.gitignore` Protection |
 
 ---
 
 ## ⚙️ Local Development Setup
 
-### 1. Prerequisites
-* [cite_start]Node.js (v18+) [cite: 45]
-* [cite_start]Google AI Studio API Key [cite: 26, 67]
-* [cite_start]Firebase Service Account Key [cite: 60]
+### 1️⃣ Prerequisites
+- Node.js **v18+**
+- Google AI Studio **API Key**
+- Firebase **Service Account Key**
 
-### 2. Backend Configuration
+---
+
+### 2️⃣ Backend Configuration
+
 ```bash
 cd backend
 npm install
-# Security Step: Create a .env file and add your GEMINI_API_KEY
-# Place your serviceAccountKey.json in the /backend folder
-node server.js'''
-3. Frontend Configuration
-Bash
-
-cd frontend
-npm install
-npm run dev
-The application will be live at http://localhost:3000.
-
-🔒 Security & Best Practices
-
-Server-Side Architecture: To prevent "Client-Side Danger," all API calls are routed through a secure backend.
-
-
-
-
-
-Secret Management: API keys and Firebase credentials are stored in environment variables and are not tracked by Git.
-
-
-
-
-Firestore Rules: Database permissions are currently set to "Test Mode" for the hackathon evaluation period.
-
-
-👥 The Team
-Developer A: Backend & AI Integration Specialist
-
-Developer B: Frontend UI/UX (Next.js) & Sustainability Lead
