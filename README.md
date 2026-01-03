@@ -46,9 +46,7 @@ A DIY upcycling engine that generates personalized craft ideas, encouraging reus
 - Google AI Studio **API Key**
 - Firebase **Service Account Key**
 
-# Security Step: Create a .env file and add your GEMINI_API_KEY
-# Place your serviceAccountKey.json in the /backend folder [cite: 69]
-node server.js
+
 ---
 
 ### 2️⃣ Backend Configuration
@@ -56,3 +54,32 @@ node server.js
 ```bash
 cd backend
 npm install
+
+# Security Step: Create a .env file and add your GEMINI_API_KEY
+# Place your serviceAccountKey.json in the /backend folder [cite: 69]
+node server.js
+
+3. Frontend Configuration
+Bash
+
+cd frontend
+npm install
+npm run dev
+The application will be live at http://localhost:3000.
+
+🔒 Security & Best Practices
+
+Server-Side Architecture: To prevent "Client-Side Danger," all API calls are routed through a secure backend.
+
+
+
+
+Secret Management: API keys and Firebase credentials are stored in environment variables and are not tracked by Git.
+
+
+Firestore Rules: Database permissions are currently set to "Test Mode" for the hackathon evaluation period.
+
+👥 The Team
+Developer A: Backend & AI Integration Specialist
+
+Developer B: Frontend UI/UX (Next.js) & Sustainability Lead
