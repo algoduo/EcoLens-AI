@@ -1,38 +1,23 @@
-import { Sidebar } from "@/components/sidebar"
-import { Certificate } from "@/components/certificate"
-import { Leaderboard } from "@/components/leaderboard"
-import { WasteAnalysis } from "@/components/waste-analysis"
-import { Footer } from "@/components/footer"
-import { Sparkles } from "lucide-react"
+"use client"
+// Use the direct relative path to reach the src folder
+import { WasteAnalysis } from "../src/components/waste-analysis";
+import { Certificate } from "../src/components/certificate";
+import { Leaderboard } from "../src/components/leaderboard";
+import { WasteTracker } from "../src/components/waste-tracker";
 
 export default function DashboardPage() {
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar />
-
-      <main className="flex-1 lg:ml-64">
-        <div className="p-6 lg:p-8 space-y-8">
-          <div className="space-y-2">
-            <div className="flex items-center gap-3">
-              <h1 className="text-4xl font-bold tracking-tight text-balance">Welcome to EcoLens AI</h1>
-              <Sparkles className="h-8 w-8 text-primary animate-pulse" />
-            </div>
-            <p className="text-lg text-muted-foreground text-balance">
-              Track your environmental impact and earn recognition for sustainable choices
-            </p>
-          </div>
-
-          {/* Main Grid */}
-          <div className="grid gap-6 lg:grid-cols-2">
-            <WasteAnalysis />
-            <Certificate />
-          </div>
-
-          <Leaderboard />
+    <div className="p-4 lg:p-8 space-y-8 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <WasteAnalysis />
+        <Certificate />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
+          <WasteTracker />
         </div>
-
-        <Footer />
-      </main>
+        <Leaderboard />
+      </div>
     </div>
-  )
+  );
 }
