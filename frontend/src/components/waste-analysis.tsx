@@ -1,7 +1,12 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { db, auth } from "@/context/UserContext" 
+// 1. Get the data from Context
+import { UserContext } from "../context/UserContext"; 
+import { useContext } from "react";
+
+// 2. Get the Firebase tools from the Config file where they live
+import { db, auth } from "../firebaseConfig";
 import { doc, updateDoc, increment, collection, addDoc, serverTimestamp } from "firebase/firestore"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"

@@ -1,6 +1,8 @@
+import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 
-import { cn } from '@/lib/utils'
+// Go up two levels to find 'src/lib/utils'
+import { cn } from "../../lib/utils"
 
 function Empty({ className, ...props }: React.ComponentProps<'div'>) {
   return (

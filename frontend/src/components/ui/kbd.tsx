@@ -1,4 +1,6 @@
-import { cn } from '@/lib/utils'
+import * as React from 'react'
+// Go up two levels to find 'src/lib/utils'
+import { cn } from "../../lib/utils"
 
 function Kbd({ className, ...props }: React.ComponentProps<'kbd'>) {
   return (

@@ -1,4 +1,6 @@
 import { initializeApp } from "firebase/app";
+// Add getAuth and getFirestore to this line
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -10,5 +12,8 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
+const app = initializeApp(firebaseConfig);
+
+// These must be exported for your components to find them
 export const auth = getAuth(app);
 export const db = getFirestore(app);

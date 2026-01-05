@@ -4,7 +4,8 @@ import * as React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
 import { SearchIcon } from 'lucide-react'
 
-import { cn } from '@/lib/utils'
+// Go up two levels to find 'src/lib/utils'
+import { cn } from "../../lib/utils"
 import {
   Dialog,
   DialogContent,

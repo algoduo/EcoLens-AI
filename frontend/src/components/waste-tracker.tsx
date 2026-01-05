@@ -1,7 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { db, auth } from "@/context/UserContext"
+// 1. Get the data from Context
+import { UserContext } from "../context/UserContext"; 
+import { useContext } from "react";
+
+// 2. Get the Firebase tools from the Config file where they live
+import { db, auth } from "../firebaseConfig";
 import { collection, query, where, onSnapshot } from "firebase/firestore"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from "recharts"

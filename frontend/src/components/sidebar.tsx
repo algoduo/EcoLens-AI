@@ -6,12 +6,18 @@ import { useState, useContext } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { UserContext, auth } from "../context/UserContext";
+// 1. Get the UserContext from the context folder
+import { UserContext } from "../context/UserContext";
+
+// 2. Get the auth tool directly from your firebaseConfig
+import { auth } from "../firebaseConfig";
 import { 
   Home, BarChart3, Trophy, Leaf, Settings, 
   Menu, X, Recycle, Target, TrendingUp, LogOut 
 } from "lucide-react"
-import { cn } from "@/lib/utils"
+// Go up one level to 'src', then into 'lib'
+// Use one set of dots to go from 'components' up to 'src', then into 'lib'
+import { cn } from "../lib/utils"
 
 const navigation = [
   { name: "Dashboard", icon: Home, href: "/", current: true },
@@ -23,7 +29,7 @@ const navigation = [
   { name: "Settings", icon: Settings, href: "#", current: false },
 ]
 
-export function Sidebar() {
+export default function Sidebar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { user, loading } = useContext(UserContext)
 
