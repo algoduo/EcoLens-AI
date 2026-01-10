@@ -1,72 +1,100 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Award, Calendar, CheckCircle2 } from "lucide-react"
+"use client"
+
+import { useContext, useRef } from "react"
+import { UserContext } from "../context/UserContext"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Award, Share2, Download } from "lucide-react"
+import { Button } from "./ui/button"
+import { toPng } from 'html-to-image' // New library import
 
 export function Certificate() {
+  const { user, loading } = useContext(UserContext)
+  const certificateRef = useRef<HTMLDivElement>(null) // Reference to the card
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'EcoLens AI Certificate',
+          text: `I'm a Level ${user?.ecoLevel || 1} Eco Warrior!`,
+          url: window.location.href,
+        });
+      } catch (err) { console.error(err); }
+    }
+  };
+
+  // Fixed Download Logic: Grabs only the card
+  const handleDownload = async () => {
+    if (certificateRef.current === null) return
+
+    try {
+      const dataUrl = await toPng(certificateRef.current, { cacheBust: true })
+      const link = document.createElement('a')
+      link.download = `${user?.displayName || 'EcoWarrior'}-Certificate.png`
+      link.href = dataUrl
+      link.click()
+    } catch (err) {
+      console.error('Oops, something went wrong!', err)
+    }
+  };
+
+  if (loading) return <div className="p-8 text-center">Loading Achievements...</div>
+
   return (
-    <Card className="overflow-hidden border-2 border-primary/20 bg-gradient-to-br from-card via-card to-primary/5 shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <CardHeader className="pb-4">
-        <div className="flex items-start justify-between">
-          <div className="space-y-1">
-            <CardTitle className="text-2xl font-bold text-balance">Sustainability Champion</CardTitle>
-            <p className="text-sm text-muted-foreground">Certification Award</p>
-          </div>
-          <Award className="h-8 w-8 text-primary animate-pulse" />
-        </div>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {/* Award Badge */}
-        <div className="flex items-center justify-center py-8">
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full animate-pulse" />
-            <div className="relative flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-primary to-chart-2 shadow-2xl ring-4 ring-background animate-[spin_20s_linear_infinite]">
-              <Award className="h-16 w-16 text-primary-foreground animate-[spin_20s_linear_infinite_reverse]" />
+    /* We attach the ref here so the library knows what to capture */
+    <div ref={certificateRef} className="bg-white"> 
+      <Card className="overflow-hidden border-emerald-100 shadow-none">
+        <CardHeader className="bg-emerald-50 border-b border-emerald-100">
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-emerald-800 flex items-center gap-2">
+              <Award className="h-5 w-5" />
+              Active Certificate
+            </CardTitle>
+            {/* The buttons stay on screen but don't show up in the downloaded image */}
+            <div className="flex gap-2 print:hidden">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8 text-emerald-600"
+                onClick={handleShare}
+              >
+                <Share2 className="h-4 w-4" />
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8 text-emerald-600"
+                onClick={handleDownload}
+              >
+                <Download className="h-4 w-4" />
+              </Button>
             </div>
           </div>
-        </div>
-
-        {/* Certificate Details */}
-        <div className="space-y-4 rounded-lg bg-muted/50 p-4 border border-border">
-          <div className="flex items-center gap-2 text-sm">
-            <CheckCircle2 className="h-4 w-4 text-primary animate-bounce" />
-            <span className="font-medium">Certified Eco Warrior</span>
+        </CardHeader>
+        <CardContent className="p-6 text-center space-y-4">
+          <div className="mx-auto w-24 h-24 rounded-full bg-emerald-100 flex items-center justify-center border-4 border-white shadow-sm">
+            <Award className="h-12 w-12 text-emerald-600" />
           </div>
-
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Calendar className="h-4 w-4" />
-            <span>Awarded on December 15, 2025</span>
-          </div>
-
-          <div className="pt-2 space-y-2">
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Awarded for outstanding commitment to environmental sustainability and achieving significant milestones in
-              waste reduction and carbon footprint management.
+          <div>
+            <h3 className="text-xl font-bold text-slate-900">
+              {user?.ecoLevel === 1 ? "Eco Initiate" : `Level ${user?.ecoLevel} Eco Master`}
+            </h3>
+            <p className="text-sm text-muted-foreground mt-1">
+              Certified Sustainability Champion
             </p>
           </div>
-        </div>
-
-        {/* Achievement Badges */}
-        <div className="flex flex-wrap gap-2">
-          <Badge
-            variant="secondary"
-            className="bg-chart-2/20 text-chart-2 border-chart-2/30 hover:scale-105 transition-transform"
-          >
-            100+ Actions
-          </Badge>
-          <Badge
-            variant="secondary"
-            className="bg-primary/20 text-primary border-primary/30 hover:scale-105 transition-transform"
-          >
-            Top 5% User
-          </Badge>
-          <Badge
-            variant="secondary"
-            className="bg-chart-4/20 text-chart-4 border-chart-4/30 hover:scale-105 transition-transform"
-          >
-            Community Leader
-          </Badge>
-        </div>
-      </CardContent>
-    </Card>
+          <div className="pt-4 border-t border-slate-100 flex justify-around text-sm">
+            <div>
+              <p className="font-bold text-slate-900">{user?.points || 0}</p>
+              <p className="text-[10px] text-muted-foreground uppercase">Total Points</p>
+            </div>
+            <div className="border-x border-slate-100 px-4">
+              <p className="font-bold text-slate-900">#{user?.rank || "247"}</p>
+              <p className="text-[10px] text-muted-foreground uppercase">Global Rank</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   )
 }
